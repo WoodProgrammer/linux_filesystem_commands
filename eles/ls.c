@@ -6,25 +6,30 @@
 #include <sys/stat.h>
 
 char* concat(const char *s1,const char *s2);
-
-
 int is_dir_or_reg(char *name);
-void read_dir(char *name);
+void read_dir(char *dir_name);
     
-int main(int argc, char **argv){
-    char *a = argv[1];
+
+void read_dir(char *dir_name){
+    int x = 0;
     char *tmp_dir_name;
     struct dirent *dir_pointer;
-    DIR *dirp = opendir(argv[1]);
+    DIR *dirp = opendir(dir_name);
 
     while ((dir_pointer = readdir(dirp)) != NULL) {
         printf("%s \n", dir_pointer-> d_name );
-        /**Directory pathleri merge ediliyor.*/
-        /**Merging directory paths */
 
-        tmp_dir_name = concat(a,dir_pointer->d_name);
-        
     }
+
+     
+}
+
+       
+
+int main(int argc, char **argv){
+    char *a = argv[1];
+    
+    read_dir(a);
     
 }
 
